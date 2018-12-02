@@ -7,6 +7,7 @@ let rng = function getRandomInt(max) {
 let body = document.querySelector('body');
 let quoteButton = document.querySelector('.js-button-quote');
 let quoteText = document.querySelector('.js-quoteText');
+let quoteIcon = document.querySelector('.fa');
 let quoteAuthor = document.querySelector('.js-quoteAuthor');
 let socialButton = document.querySelectorAll('.button-social');
 let twitterButton = socialButton[0];
@@ -31,6 +32,7 @@ fetch("http://localhost:3000/quotes")
                     quoteButton.style.backgroundColor = randomColor;
                     socialButton[0].style.backgroundColor = randomColor;
                     socialButton[1].style.backgroundColor = randomColor;
+                    quoteIcon.style.color = randomColor;
                 })
         }
         quoteButton.addEventListener("click", fetchServer);
@@ -41,17 +43,18 @@ fetch("http://localhost:3000/quotes")
         console.log("Loading JSON from local file.")
         fetchLocal = function () {
             return fetch("db.json")
-                    .then(resp => resp.json())
-                    .then(resp => resp.quotes[rng(101)]) 
-                    .then(quote => {
-                        quoteText.textContent = quote.quote;
-                        quoteAuthor.textContent = quote.author;
-                        randomColor = `hsl(${rng(360)}, 70%, 70%)`;
-                        body.style.backgroundColor = randomColor;
-                        quoteButton.style.backgroundColor = randomColor;
-                        socialButton[0].style.backgroundColor = randomColor;
-                        socialButton[1].style.backgroundColor = randomColor;
-                    })
+                .then(resp => resp.json())
+                .then(resp => resp.quotes[rng(101)])
+                .then(quote => {
+                    quoteText.textContent = quote.quote;
+                    quoteAuthor.textContent = quote.author;
+                    randomColor = `hsl(${rng(360)}, 70%, 70%)`;
+                    body.style.backgroundColor = randomColor;
+                    quoteButton.style.backgroundColor = randomColor;
+                    socialButton[0].style.backgroundColor = randomColor;
+                    socialButton[1].style.backgroundColor = randomColor;
+                    quoteIcon.style.color = randomColor;
+                })
         }
         quoteButton.addEventListener("click", fetchLocal);
         fetchLocal();
@@ -59,14 +62,14 @@ fetch("http://localhost:3000/quotes")
 
 twitterButton.addEventListener('click', () => {
     let a = document.createElement('a');
-    a.target="_blank";
-    a.href=`https://twitter.com/intent/tweet?hashtags=quotes&text=${encodeURIComponent(`"${quoteText.textContent}" ${quoteAuthor.textContent}`)}`
+    a.target = "_blank";
+    a.href = `https://twitter.com/intent/tweet?hashtags=quotes&text=${encodeURIComponent(`"${quoteText.textContent}" ${quoteAuthor.textContent}`)}`
     a.click();
 });
 
 tumblrButton.addEventListener('click', () => {
     let a = document.createElement('a');
-    a.target="_blank";
+    a.target = "_blank";
     a.href = `https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes&caption=${encodeURIComponent(quoteAuthor.textContent)}&content=${encodeURIComponent(quoteText.textContent)}&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button`
     a.click();
 })
