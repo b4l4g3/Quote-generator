@@ -57,6 +57,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: black;
   font-family: "Raleway", sans-serif;
   font-weight: 400;
@@ -96,6 +98,7 @@ main {
   justify-content: center;
   align-items: center;
   margin: 45px auto 5px auto;
+  user-select: none;
 }
 
 .button {
@@ -131,8 +134,30 @@ main {
 
 footer {
   color: black;
-  margin-top: 10%;
   visibility: hidden;
+}
+
+@media (min-width: 700px) {
+  main {
+    flex-grow: 0;
+    max-width: 700px;
+  }
+
+  .button-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .button-quote {
+    width: 150px;
+  }
+}
+@media (min-width: 1100px) {
+  footer {
+    visibility: visible;
+    position: absolute;
+    bottom: 40px;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */
