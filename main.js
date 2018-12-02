@@ -38,6 +38,7 @@ fetch("http://localhost:3000/quotes")
     })
     // Use local JSON file if the server is not working.
     .catch(error => {
+        console.log("Loading JSON from local file.")
         fetchLocal = function () {
             return fetch("db.json")
                     .then(resp => resp.json())
@@ -50,7 +51,6 @@ fetch("http://localhost:3000/quotes")
                         quoteButton.style.backgroundColor = randomColor;
                         socialButton[0].style.backgroundColor = randomColor;
                         socialButton[1].style.backgroundColor = randomColor;
-                        console.log(randomColor)
                     })
         }
         quoteButton.addEventListener("click", fetchLocal);
