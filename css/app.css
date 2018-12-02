@@ -101,6 +101,15 @@ main {
   border: none;
   border-radius: 5px;
   font: inherit;
+  font-weight: 500;
+}
+
+.button:focus {
+  outline: 0;
+}
+
+.button:active {
+  box-shadow: inset 3px 3px 10px 1px rgba(0, 0, 0, 0.2);
 }
 
 .button-social {
