@@ -27,7 +27,7 @@ fetch("http://localhost:3000/quotes")
                 .then(resp => resp[0]) // The response array has only one element
                 .then(quote => {
                     quoteText.textContent = quote.quote;
-                    quoteAuthor.textContent = quote.author;
+                    quoteAuthor.textContent = `\u2014 ${quote.author}`;
                     randomColor = `rgba(1, ${rng(250)}, ${rng(250)}, 0.4)`;
                     body.style.backgroundColor = randomColor;
                     quoteButton.style.backgroundColor = randomColor;
@@ -48,7 +48,7 @@ fetch("http://localhost:3000/quotes")
                 .then(resp => resp.quotes[rng(101)])
                 .then(quote => {
                     quoteText.textContent = quote.quote;
-                    quoteAuthor.textContent = quote.author;
+                    quoteAuthor.textContent = `\u2014 ${quote.author}`;
                     randomColor = `hsl(${rng(360)}, 70%, 70%)`;
                     body.style.backgroundColor = randomColor;
                     quoteButton.style.backgroundColor = randomColor;
