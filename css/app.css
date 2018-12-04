@@ -152,5 +152,10 @@ footer {
     width: 150px;
   }
 }
+@media (max-width: 350px) {
+  main {
+    justify-content: flex-start;
+  }
+}
 
 /*# sourceMappingURL=app.css.map */
